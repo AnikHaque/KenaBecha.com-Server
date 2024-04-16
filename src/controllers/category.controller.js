@@ -5,17 +5,20 @@ const createCategory = async (req, res) => {
   try {
     const resp = await categoryServices.createCategoryIntoDb(categoryData);
 
-    res.status(201).send({
+    // Use sendResponse function to send the response
+    sendResponse(res, {
       statusCode: 201,
       success: true,
-      message: "Category created successfully",
+      message: "Category create successfully",
       data: resp,
     });
-  } catch (e) {
-    res.status(500).send({
+  } catch (error) {
+    // Handle errors appropriately
+    sendResponse(res, {
       statusCode: 500,
       success: false,
-      message: "Something went failed!",
+      message: "Internal Server Error",
+      data: null,
     });
   }
 };

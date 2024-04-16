@@ -6,12 +6,21 @@ const createUser = async (req, res) => {
   try {
     const resp = await userServices.createUserIntoDb(userData);
 
-    res.status(201).send({
-      msg: "User created!",
+    // Use sendResponse function to send the response
+    sendResponse(res, {
+      statusCode: 201,
+      success: true,
+      message: "User created successfully",
       data: resp,
     });
-  } catch (e) {
-    res.status(500).send("Someting went failed!");
+  } catch (error) {
+    // Handle errors appropriately
+    sendResponse(res, {
+      statusCode: 500,
+      success: false,
+      message: "Internal Server Error",
+      data: null,
+    });
   }
 };
 

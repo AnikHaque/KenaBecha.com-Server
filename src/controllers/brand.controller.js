@@ -1,23 +1,28 @@
 const brandServices = require("../services/brand.service");
-const { sendResponse } = require("../utility/sendResponse");
+const sendResponse = require("../utility/sendResponse"); // Import sendResponse without destructuring
 
 const createBrand = async (req, res) => {
   const brandData = req.body;
 
-  const resp = await brandServices.createBrandIntoDb(brandData);
+  try {
+    const resp = await brandServices.createBrandIntoDb(brandData);
 
-  res.status(201).send({
-    statusCode: 201,
-    success: true,
-    message: "Brand created successfully",
-    data: resp,
-  });
-  // sendResponse(res, {
-  //   statusCode: 201,
-  //   success: true,
-  //   message: "Brand created successfully",
-  //   data: resp,
-  // });
+    // Use sendResponse function to send the response
+    sendResponse(res, {
+      statusCode: 201,
+      success: true,
+      message: "Brand create successfully",
+      data: resp,
+    });
+  } catch (error) {
+    // Handle errors appropriately
+    sendResponse(res, {
+      statusCode: 500,
+      success: false,
+      message: "Internal Server Error",
+      data: null,
+    });
+  }
 };
 
 module.exports = {

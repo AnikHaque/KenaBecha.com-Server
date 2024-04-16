@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const dbConnection = require("./db");
 const userRouter = require("./src/routes/user.route");
+const brandRouter = require("./src/routes/brand.route");
 
 const app = new express();
 
@@ -34,5 +35,6 @@ app.use(bodyParser.json());
 dbConnection().catch((err) => console.log("Error occured::", err));
 
 app.use(userRouter);
+app.use(brandRouter);
 
 module.exports = app;

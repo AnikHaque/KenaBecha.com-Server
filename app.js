@@ -10,6 +10,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const dbConnection = require("./db");
+const userRouter = require("./src/routes/user.route");
 
 // Initializing express application
 const app = new express();
@@ -47,5 +48,7 @@ app.use(bodyParser.json());
 
 // MongoDB Connection
 dbConnection().catch((err) => console.log("Error occured::", err));
+
+app.use(userRouter);
 
 module.exports = app;

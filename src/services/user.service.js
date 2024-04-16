@@ -5,6 +5,8 @@ const createUserIntoDb = async (payload) => {
   return resp;
 };
 
-export const userServices = {
+const userServices = {
   createUserIntoDb,
 };
+
+module.exports = userServices;

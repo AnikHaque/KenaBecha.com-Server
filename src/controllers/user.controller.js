@@ -15,6 +15,6 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = {
+export const userControllers = {
   createUser,
 };

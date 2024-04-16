@@ -13,8 +13,9 @@ const dbConnection = require("./db");
 const userRouter = require("./src/routes/user.route");
 const brandRouter = require("./src/routes/brand.route");
 const categoryRouter = require("./src/routes/category.route");
+const globalErrorHandler = require("./src/middlewares/globalErrorHandler");
 
-const app = new express();
+const app = express();
 
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000,
@@ -38,4 +39,10 @@ dbConnection().catch((err) => console.log("Error occured::", err));
 app.use(userRouter);
 app.use(brandRouter);
 app.use(categoryRouter);
+
+app.get("/", (req, res) => {
+  res.send("Hi Next Level Developer !");
+});
+app.use(globalErrorHandler);
+
 module.exports = app;

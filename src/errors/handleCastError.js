@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const handleCastError = (err) => {
   const errorSources = [
@@ -17,4 +17,4 @@ const handleCastError = (err) => {
   };
 };
 
-export default handleCastError;
+module.exports = handleCastError;

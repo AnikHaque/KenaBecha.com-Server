@@ -1,4 +1,4 @@
-import { ZodError } from "zod";
+const { ZodError } = require("zod");
 
 const handleZodError = (err) => {
   const errorSources = err.issues.map((issue) => {
@@ -17,4 +17,4 @@ const handleZodError = (err) => {
   };
 };
 
-export default handleZodError;
+module.exports = handleZodError;

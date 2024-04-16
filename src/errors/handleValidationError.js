@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const handleValidationError = (err) => {
   const errorSources = Object.values(err.errors).map((val) => {
@@ -17,4 +17,4 @@ const handleValidationError = (err) => {
   };
 };
 
-export default handleValidationError;
+module.exports = handleValidationError;

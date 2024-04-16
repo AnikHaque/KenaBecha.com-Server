@@ -3,22 +3,22 @@ const sendResponse = require("../utility/sendResponse");
 
 const createCategory = async (req, res) => {
   const categoryData = req.body;
+
   try {
     const resp = await categoryServices.createCategoryIntoDb(categoryData);
 
-    // Use sendResponse function to send the response
     sendResponse(res, {
       statusCode: 201,
       success: true,
-      message: "Category create successfully",
+      message: "Category created successfully",
       data: resp,
     });
-  } catch (error) {
-    // Handle errors appropriately
+  } catch (err) {
+    // Handle errors here
     sendResponse(res, {
-      statusCode: 500,
+      statusCode: err.statusCode || 500, // Use error statusCode if available, otherwise default to 500
       success: false,
-      message: "Internal Server Error",
+      message: err.message || "Internal Server Error", // Use error message if available, otherwise default to "Internal Server Error"
       data: null,
     });
   }

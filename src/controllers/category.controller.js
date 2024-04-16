@@ -6,11 +6,17 @@ const createCategory = async (req, res) => {
     const resp = await categoryServices.createCategoryIntoDb(categoryData);
 
     res.status(201).send({
-      msg: "category created!",
+      statusCode: 201,
+      success: true,
+      message: "Category created successfully",
       data: resp,
     });
   } catch (e) {
-    res.status(500).send("Someting went failed!");
+    res.status(500).send({
+      statusCode: 500,
+      success: false,
+      message: "Something went failed!",
+    });
   }
 };
 

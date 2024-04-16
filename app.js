@@ -12,6 +12,7 @@ require("dotenv").config();
 const dbConnection = require("./db");
 const userRouter = require("./src/routes/user.route");
 const brandRouter = require("./src/routes/brand.route");
+const categoryRouter = require("./src/routes/category.route");
 
 const app = new express();
 
@@ -36,5 +37,5 @@ dbConnection().catch((err) => console.log("Error occured::", err));
 
 app.use(userRouter);
 app.use(brandRouter);
-
+app.use(categoryRouter);
 module.exports = app;

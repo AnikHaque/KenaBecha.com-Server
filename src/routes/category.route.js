@@ -1,0 +1,13 @@
+const express = require("express");
+const categoryControllers = require("../controllers/category.controller");
+const apiEndPoints = require("../utility/api-end-point-constants");
+
+const categoryRouter = express.Router();
+const categoryEndPoints = apiEndPoints.category;
+
+categoryRouter.post(
+  categoryEndPoints.category,
+  categoryControllers.createCategory
+);
+
+module.exports = categoryRouter;

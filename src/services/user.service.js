@@ -16,6 +16,6 @@ const createUser = async () => {
   }
 };
 
-module.exports = {
+export const userServices = {
   createUser,
 };

@@ -7,7 +7,6 @@ const createBrand = async (req, res) => {
   try {
     const resp = await brandServices.createBrandIntoDb(brandData);
 
-    // Use sendResponse function to send the response
     sendResponse(res, {
       statusCode: 201,
       success: true,
@@ -15,7 +14,6 @@ const createBrand = async (req, res) => {
       data: resp,
     });
   } catch (error) {
-    // Handle errors appropriately
     sendResponse(res, {
       statusCode: 500,
       success: false,
@@ -25,6 +23,27 @@ const createBrand = async (req, res) => {
   }
 };
 
+const getAllBrands = async (req, res) => {
+  try {
+    const Brands = await brandServices.getAllBrandsFromDb();
+
+    sendResponse(res, {
+      statusCode: 201,
+      success: true,
+      message: "Brands retrieved successfully",
+      data: Brands,
+    });
+  } catch (err) {
+    sendResponse(res, {
+      statusCode: err.statusCode || 500,
+      success: false,
+      message: err.message || "Internal Server Error",
+      data: null,
+    });
+  }
+};
+
 module.exports = {
   createBrand,
+  getAllBrands,
 };

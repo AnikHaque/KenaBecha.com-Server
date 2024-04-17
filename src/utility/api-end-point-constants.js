@@ -4,6 +4,7 @@ const user = {
 
 const brand = {
   brand: "/brand",
+  allBrands: "/brands",
 };
 
 const category = {
@@ -13,6 +14,7 @@ const category = {
 const product = {
   product: "/product",
   allProducts: "/products",
+  byBrands: "/productsByBrand/:BrandID",
 };
 
 const flashdeals = {

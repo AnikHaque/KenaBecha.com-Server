@@ -6,5 +6,6 @@ const brandRouter = express.Router();
 const brandEndPoints = apiEndPoints.brand;
 
 brandRouter.post(brandEndPoints.brand, brandControllers.createBrand);
+brandRouter.get(brandEndPoints.allBrands, brandControllers.getAllBrands);
 
 module.exports = brandRouter;

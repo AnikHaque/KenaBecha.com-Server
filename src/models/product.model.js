@@ -11,12 +11,12 @@ const DataSchema = mongoose.Schema(
     star: { type: String, required: true },
     stock: { type: Boolean, required: true },
     remark: { type: String, required: true },
-    category: {
+    categoryID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "categories",
       required: true,
     },
-    brand: {
+    brandID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "brands",
       required: true,

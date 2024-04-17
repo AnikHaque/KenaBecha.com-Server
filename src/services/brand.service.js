@@ -5,8 +5,14 @@ const createBrandIntoDb = async (payload) => {
   return resp;
 };
 
+const getAllBrandsFromDb = async () => {
+  let data = await BrandModel.find();
+  return data;
+};
+
 const brandServices = {
   createBrandIntoDb,
+  getAllBrandsFromDb,
 };
 
 module.exports = brandServices;

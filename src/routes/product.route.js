@@ -1,0 +1,14 @@
+const express = require("express");
+const productControllers = require("../controllers/product.controller");
+const apiEndPoints = require("../utility/api-end-point-constants");
+
+const productRouter = express.Router();
+const productEndPoints = apiEndPoints.product;
+
+productRouter.post(productEndPoints.product, productControllers.createProduct);
+productRouter.get(
+  productEndPoints.allProducts,
+  productControllers.getAllProducts
+);
+
+module.exports = productRouter;

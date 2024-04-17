@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const DataSchema = mongoose.Schema(
   {
     title: { type: String, required: true },
@@ -10,8 +11,16 @@ const DataSchema = mongoose.Schema(
     star: { type: String, required: true },
     stock: { type: Boolean, required: true },
     remark: { type: String, required: true },
-    categoryID: { type: mongoose.Schema.Types.ObjectId, required: true },
-    brandID: { type: mongoose.Schema.Types.ObjectId, required: true },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "categories",
+      required: true,
+    },
+    brand: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "brands",
+      required: true,
+    },
   },
   { timestamps: true, versionKey: false }
 );

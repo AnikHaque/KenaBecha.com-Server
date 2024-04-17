@@ -15,9 +15,14 @@ const product = {
   allProducts: "/products",
 };
 
+const flashdeals = {
+  flashdeals: "/flashdeal",
+};
+
 module.exports = {
   user,
   brand,
   category,
   product,
+  flashdeals,
 };

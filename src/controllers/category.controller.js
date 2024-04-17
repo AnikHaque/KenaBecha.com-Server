@@ -16,9 +16,9 @@ const createCategory = async (req, res) => {
   } catch (err) {
     // Handle errors here
     sendResponse(res, {
-      statusCode: err.statusCode || 500, // Use error statusCode if available, otherwise default to 500
+      statusCode: err.statusCode || 500,
       success: false,
-      message: err.message || "Internal Server Error", // Use error message if available, otherwise default to "Internal Server Error"
+      message: err.message || "Internal Server Error",
       data: null,
     });
   }

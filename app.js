@@ -16,6 +16,7 @@ const categoryRouter = require("./src/routes/category.route");
 const globalErrorHandler = require("./src/middlewares/globalErrorHandler");
 const productRouter = require("./src/routes/product.route");
 const flashDealsRouter = require("./src/routes/flashDeals.route");
+const authRouter = require("./src/routes/auth.route");
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use(bodyParser.json());
 dbConnection().catch((err) => console.log("Error occured::", err));
 
 app.use(userRouter);
+app.use(authRouter);
 app.use(brandRouter);
 app.use(categoryRouter);
 app.use(productRouter);

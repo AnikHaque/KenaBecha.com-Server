@@ -2,6 +2,10 @@ const user = {
   user: "/user",
 };
 
+const auth = {
+  login: "/login",
+};
+
 const brand = {
   brand: "/brand",
   allBrands: "/brands",
@@ -23,6 +27,7 @@ const flashdeals = {
 
 module.exports = {
   user,
+  auth,
   brand,
   category,
   product,

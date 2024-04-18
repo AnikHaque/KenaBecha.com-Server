@@ -114,11 +114,59 @@ const ListByCategoryService = async (req) => {
   }
 };
 
+// list by remark
+const ListByRemarkService = async (req) => {
+  try {
+    let Remark = req.params.Remark;
+    let MatchStage = { $match: { remark: Remark } };
+
+    let JoinWithBrandStage = {
+      $lookup: {
+        from: "brands",
+        localField: "brandID",
+        foreignField: "_id",
+        as: "brand",
+      },
+    };
+    let JoinWithCategoryStage = {
+      $lookup: {
+        from: "categories",
+        localField: "categoryID",
+        foreignField: "_id",
+        as: "category",
+      },
+    };
+    let UnwindBrandStage = { $unwind: "$brand" };
+    let UnwindCategoryStage = { $unwind: "$category" };
+    let ProjectionStage = {
+      $project: {
+        "brand._id": 0,
+        "category._id": 0,
+        categoryID: 0,
+        brandID: 0,
+      },
+    };
+
+    let data = await ProductModel.aggregate([
+      MatchStage,
+      JoinWithBrandStage,
+      JoinWithCategoryStage,
+      UnwindBrandStage,
+      UnwindCategoryStage,
+      ProjectionStage,
+    ]);
+    return data;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 const productServices = {
   createProductIntoDb,
   findAllProductsFromDb,
   ListByBrandService,
   ListByCategoryService,
+  ListByRemarkService,
 };
 
 module.exports = productServices;

@@ -21,4 +21,10 @@ productRouter.get(
   productEndPoints.byCategory,
   productControllers.getProductsByCategory
 );
+
+productRouter.get(
+  productEndPoints.byRemark,
+  productControllers.getProductsByRemark
+);
+
 module.exports = productRouter;

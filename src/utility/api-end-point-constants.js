@@ -11,6 +11,10 @@ const brand = {
   allBrands: "/brands",
 };
 
+const review = {
+  review: "/review",
+};
+
 const category = {
   category: "/category",
 };
@@ -32,4 +36,5 @@ module.exports = {
   category,
   product,
   flashdeals,
+  review,
 };

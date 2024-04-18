@@ -17,6 +17,7 @@ const globalErrorHandler = require("./src/middlewares/globalErrorHandler");
 const productRouter = require("./src/routes/product.route");
 const flashDealsRouter = require("./src/routes/flashDeals.route");
 const authRouter = require("./src/routes/auth.route");
+const reviewRouter = require("./src/routes/review.route");
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use(brandRouter);
 app.use(categoryRouter);
 app.use(productRouter);
 app.use(flashDealsRouter);
+app.use(reviewRouter);
 
 app.get("/", (req, res) => {
   res.send("Hi Next Level Developer !");

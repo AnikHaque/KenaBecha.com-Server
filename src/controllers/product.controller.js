@@ -68,8 +68,21 @@ const getProductsByBrand = async (req, res) => {
   }
 };
 
+const getProductsByCategory = async (req, res) => {
+  // Call the service function to fetch all products with populated category and brand details
+  const productByCategory = await productServices.ListByCategoryService(req);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Products by category retrieved successfully",
+    data: productByCategory,
+  });
+};
+
 module.exports = {
   createProduct,
   getAllProducts,
   getProductsByBrand,
+  getProductsByCategory,
 };

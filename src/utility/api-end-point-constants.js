@@ -23,6 +23,7 @@ const product = {
   product: "/product",
   allProducts: "/products",
   byBrands: "/productsByBrand/:BrandID",
+  byCategory: "/productsByCategory/:CategoryID",
 };
 
 const flashdeals = {

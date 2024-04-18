@@ -17,4 +17,8 @@ productRouter.get(
   productControllers.getProductsByBrand
 );
 
+productRouter.get(
+  productEndPoints.byCategory,
+  productControllers.getProductsByCategory
+);
 module.exports = productRouter;

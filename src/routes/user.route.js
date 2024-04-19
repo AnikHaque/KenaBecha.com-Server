@@ -5,6 +5,11 @@ const apiEndPoints = require("../utility/api-end-point-constants");
 const userRouter = express.Router();
 const userEndPoints = apiEndPoints.user;
 
-userRouter.post(userEndPoints.user, userControllers.createUser);
+userRouter.post(userEndPoints.user, userControllers.userRegistration);
+
+userRouter.post(
+  userEndPoints.verify,
+  userControllers.verifyOTPAndCreateAccount
+);
 
 module.exports = userRouter;

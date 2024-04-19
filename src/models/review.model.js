@@ -6,11 +6,7 @@ const DataSchema = mongoose.Schema(
       ref: "products",
       required: true,
     },
-    userID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-      required: true,
-    },
+    email: { type: String },
     des: { type: String, required: true },
     rating: { type: String, required: true },
   },

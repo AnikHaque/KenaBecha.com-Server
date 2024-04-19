@@ -1,5 +1,6 @@
 const user = {
-  user: "/user",
+  user: "/register",
+  verify: "/verifyOtp",
 };
 
 const auth = {
@@ -25,6 +26,8 @@ const product = {
   byBrands: "/productsByBrand/:BrandID",
   byCategory: "/productsByCategory/:CategoryID",
   byRemark: "/productsByRemark/:Remark",
+  details: "/ProductDetails/:ProductID",
+  review: "/CreateReview",
 };
 
 const flashdeals = {

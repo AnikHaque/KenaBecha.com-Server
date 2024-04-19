@@ -7,6 +7,8 @@ const productEndPoints = apiEndPoints.product;
 
 productRouter.post(productEndPoints.product, productControllers.createProduct);
 
+productRouter.post(productEndPoints.review, productControllers.productReview);
+
 productRouter.get(
   productEndPoints.allProducts,
   productControllers.getAllProducts
@@ -25,6 +27,11 @@ productRouter.get(
 productRouter.get(
   productEndPoints.byRemark,
   productControllers.getProductsByRemark
+);
+
+productRouter.get(
+  productEndPoints.details,
+  productControllers.getProductsDetails
 );
 
 module.exports = productRouter;

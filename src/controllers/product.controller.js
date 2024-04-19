@@ -1,5 +1,6 @@
 const productServices = require("../services/product.service");
 const sendResponse = require("../utility/sendResponse");
+const jwt = require("jsonwebtoken");
 
 const createProduct = async (req, res) => {
   const productData = req.body;
@@ -91,10 +92,31 @@ const getProductsByRemark = async (req, res) => {
     data: productByRemark,
   });
 };
+
+// product details
+const getProductsDetails = async (req, res) => {
+  // Call the service function to fetch all products with populated category and brand details
+  const productDetails = await productServices.DetailsService(req);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Products Details retrieved successfully",
+    data: productDetails,
+  });
+};
+
+const productReview = async (req, res) => {
+  let result = await productServices.CreateReviewService(req);
+  return res.status(200).json(result);
+};
+
 module.exports = {
   createProduct,
   getAllProducts,
   getProductsByBrand,
   getProductsByCategory,
   getProductsByRemark,
+  getProductsDetails,
+  productReview,
 };

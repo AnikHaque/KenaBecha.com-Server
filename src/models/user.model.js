@@ -5,11 +5,12 @@ const userSchema = new Schema({
   name: String,
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  role: { type: String, default: "customer" },
   address: String,
   phone: String,
-  role: String,
   age: Number,
   authToken: String,
+  otp: String,
 });
 
 const userModel = model("users", userSchema);

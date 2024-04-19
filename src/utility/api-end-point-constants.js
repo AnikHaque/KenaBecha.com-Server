@@ -1,9 +1,6 @@
 const user = {
   user: "/register",
   verify: "/verifyOtp",
-};
-
-const auth = {
   login: "/login",
 };
 
@@ -36,7 +33,6 @@ const flashdeals = {
 
 module.exports = {
   user,
-  auth,
   brand,
   category,
   product,

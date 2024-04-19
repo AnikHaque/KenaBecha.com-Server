@@ -1,6 +1,7 @@
 const {
   registerUserWithOTP,
   createUserAccount,
+  loginUser,
 } = require("../services/user.service");
 
 const userRegistration = async (req, res) => {
@@ -39,4 +40,23 @@ const verifyOTPAndCreateAccount = async (req, res) => {
   }
 };
 
-module.exports = { userRegistration, verifyOTPAndCreateAccount };
+const userLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const loginResult = await loginUser(email, password);
+
+    if (loginResult.status !== "success") {
+      return res.status(401).json(loginResult);
+    }
+
+    // Login successful, send token in response
+    return res.status(200).json(loginResult);
+  } catch (error) {
+    console.error("Error during login:", error);
+    return res
+      .status(500)
+      .json({ status: "fail", message: "Error during login" });
+  }
+};
+
+module.exports = { userRegistration, verifyOTPAndCreateAccount, userLogin };

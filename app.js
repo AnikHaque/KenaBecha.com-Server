@@ -41,7 +41,6 @@ app.use(bodyParser.json());
 dbConnection().catch((err) => console.log("Error occured::", err));
 
 app.use(userRouter);
-app.use(authRouter);
 app.use(brandRouter);
 app.use(categoryRouter);
 app.use(productRouter);

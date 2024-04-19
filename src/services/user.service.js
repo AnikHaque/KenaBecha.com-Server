@@ -1,5 +1,7 @@
 const userModel = require("../models/user.model");
+const { EncodeToken } = require("../utility/TokenHelper");
 const { UserOTPService } = require("./auth.service");
+const bcrypt = require("bcrypt");
 
 const registerUserWithOTP = async (userData) => {
   try {
@@ -63,7 +65,32 @@ const createUserAccount = async (userTempData) => {
   }
 };
 
+const loginUser = async (email, password) => {
+  try {
+    // Find user by email
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+      return { status: "fail", message: "User not found" };
+    }
+
+    // Check if password matches
+    if (password !== user.password) {
+      return { status: "fail", message: "Incorrect password" };
+    }
+
+    // Password matched, generate JWT token
+    const token = EncodeToken(email, user._id.toString());
+
+    return { status: "success", message: "Login successful", token };
+  } catch (error) {
+    console.error("Error during login:", error);
+    return { status: "fail", message: "Error during login" };
+  }
+};
+
 module.exports = {
   registerUserWithOTP,
   createUserAccount,
+  loginUser,
 };

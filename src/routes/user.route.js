@@ -7,9 +7,6 @@ const userEndPoints = apiEndPoints.user;
 
 userRouter.post(userEndPoints.user, userControllers.userRegistration);
 
-userRouter.post(
-  userEndPoints.verify,
-  userControllers.verifyOTPAndCreateAccount
-);
+userRouter.post(userEndPoints.login, userControllers.userLogin);
 
 module.exports = userRouter;

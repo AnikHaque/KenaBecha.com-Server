@@ -15,7 +15,7 @@ const cartlist = {
   savecartlist: "/SaveCartList",
   updatecartlist: "/UpdateCartList/:cartID",
   removecartlist: "/RemoveCartList",
-  showcartlist: "CartList",
+  showcartlist: "/CartList",
 };
 
 const brand = {

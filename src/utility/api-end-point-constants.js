@@ -2,6 +2,7 @@ const user = {
   user: "/register",
   verify: "/verifyOtp",
   login: "/login",
+  logout: "/logout",
 };
 
 const brand = {

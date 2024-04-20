@@ -49,6 +49,18 @@ const userLogin = async (req, res) => {
       return res.status(401).json(loginResult);
     }
 
+    if (loginResult.status == "success") {
+      //  cookie set
+      let cookieOption = {
+        expires: new Date(Date.now() + 24 * 6060 * 1000),
+        httpOnly: false,
+      };
+
+      // Set Cookies With Response
+      res.cookie("token", loginResult.token, cookieOption);
+      return res.status(200).json(loginResult);
+    }
+
     // Login successful, send token in response
     return res.status(200).json(loginResult);
   } catch (error) {
@@ -59,4 +71,24 @@ const userLogin = async (req, res) => {
   }
 };
 
-module.exports = { userRegistration, verifyOTPAndCreateAccount, userLogin };
+const userLogout = async (req, res) => {
+  try {
+    // Clear the token from cookies
+    res.clearCookie("token");
+    return res
+      .status(200)
+      .json({ status: "success", message: "User logged out successfully" });
+  } catch (error) {
+    console.error("Error during logout:", error);
+    return res
+      .status(500)
+      .json({ status: "fail", message: "Error during logout" });
+  }
+};
+
+module.exports = {
+  userRegistration,
+  verifyOTPAndCreateAccount,
+  userLogin,
+  userLogout,
+};

@@ -6,6 +6,10 @@ const user = {
   createProfile: "/create-profile",
 };
 
+const wishlist = {
+  savewishlist: "/SaveWishList",
+  removewishlist: "/removeWishList",
+};
 const brand = {
   brand: "/brand",
   allBrands: "/brands",
@@ -40,4 +44,5 @@ module.exports = {
   product,
   flashdeals,
   review,
+  wishlist,
 };

@@ -10,6 +10,14 @@ const wishlist = {
   savewishlist: "/SaveWishList",
   removewishlist: "/removeWishList",
 };
+
+const cartlist = {
+  savecartlist: "/SaveCartList",
+  updatecartlist: "/UpdateCartList/:cartID",
+  removecartlist: "/RemoveCartList",
+  showcartlist: "CartList",
+};
+
 const brand = {
   brand: "/brand",
   allBrands: "/brands",
@@ -45,4 +53,5 @@ module.exports = {
   flashdeals,
   review,
   wishlist,
+  cartlist,
 };

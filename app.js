@@ -19,6 +19,7 @@ const flashDealsRouter = require("./src/routes/flashDeals.route");
 const authRouter = require("./src/routes/auth.route");
 const reviewRouter = require("./src/routes/review.route");
 const wishRouter = require("./src/routes/wishlist.route");
+const cartRouter = require("./src/routes/cart.route");
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use(productRouter);
 app.use(flashDealsRouter);
 app.use(reviewRouter);
 app.use(wishRouter);
+app.use(cartRouter);
 
 app.get("/", (req, res) => {
   res.send("Hi Next Level Developer !");

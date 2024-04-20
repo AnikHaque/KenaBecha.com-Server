@@ -2,6 +2,7 @@ const {
   registerUserWithOTP,
   createUserAccount,
   loginUser,
+  SaveProfileService,
 } = require("../services/user.service");
 
 const userRegistration = async (req, res) => {
@@ -86,9 +87,21 @@ const userLogout = async (req, res) => {
   }
 };
 
+const CreateProfile = async (req, res) => {
+  let result = await SaveProfileService(req);
+  return res.status(200).json(result);
+};
+
+const UpdateProfile = async (req, res) => {
+  let result = await SaveProfileService(req);
+  return res.status(200).json(result);
+};
+
 module.exports = {
   userRegistration,
   verifyOTPAndCreateAccount,
   userLogin,
   userLogout,
+  CreateProfile,
+  UpdateProfile,
 };

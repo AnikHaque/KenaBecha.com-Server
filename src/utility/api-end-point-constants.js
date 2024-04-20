@@ -3,6 +3,7 @@ const user = {
   verify: "/verifyOtp",
   login: "/login",
   logout: "/logout",
+  createProfile: "/create-profile",
 };
 
 const brand = {

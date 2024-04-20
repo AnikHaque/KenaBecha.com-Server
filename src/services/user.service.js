@@ -1,4 +1,5 @@
 const userModel = require("../models/user.model");
+const ProfileModel = require("../models/profile.model");
 const { EncodeToken } = require("../utility/TokenHelper");
 const { UserOTPService } = require("./auth.service");
 const bcrypt = require("bcrypt");
@@ -89,8 +90,31 @@ const loginUser = async (email, password) => {
   }
 };
 
+const SaveProfileService = async (req) => {
+  try {
+    let user_id = req.headers.user_id;
+    console.log(user_id);
+
+    let reqBody = req.body;
+    reqBody.userID = user_id;
+    const profile = await ProfileModel.updateOne(
+      { userID: user_id }.populate,
+      { $set: reqBody },
+      { upsert: true }
+    );
+    return {
+      status: "success",
+      message: "Profile Save Success",
+      data: profile,
+    };
+  } catch (e) {
+    return { status: "fail", message: "Something Went Wrong" };
+  }
+};
+
 module.exports = {
   registerUserWithOTP,
   createUserAccount,
   loginUser,
+  SaveProfileService,
 };

@@ -7,8 +7,16 @@ const userRouter = express.Router();
 const userEndPoints = apiEndPoints.user;
 
 userRouter.post(userEndPoints.user, userControllers.userRegistration);
-
+userRouter.post(
+  userEndPoints.verify,
+  userControllers.verifyOTPAndCreateAccount
+);
 userRouter.post(userEndPoints.login, userControllers.userLogin);
 userRouter.post(userEndPoints.logout, userControllers.userLogout);
+userRouter.post(
+  userEndPoints.createProfile,
+  AuthVerificationMiddleware,
+  userControllers.CreateProfile
+);
 
 module.exports = userRouter;

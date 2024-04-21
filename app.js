@@ -20,6 +20,7 @@ const wishRouter = require("./src/routes/wishlist.route");
 const cartRouter = require("./src/routes/cart.route");
 const invoiceRouter = require("./src/routes/invoice.route");
 const paymentRouter = require("./src/routes/payment.route");
+const adminRouter = require("./src/routes/admin.route");
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(bodyParser.json());
 dbConnection().catch((err) => console.log("Error occured::", err));
 
 app.use(userRouter);
+app.use(adminRouter);
 app.use(brandRouter);
 app.use(categoryRouter);
 app.use(productRouter);

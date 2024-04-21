@@ -6,6 +6,14 @@ const user = {
   createProfile: "/create-profile",
 };
 
+const admin = {
+  admin: "/registerAdmin",
+  verifyAdmin: "/verifyOtpAdmin",
+  loginAdmin: "/loginAdmin",
+  logoutAdmin: "/logoutAdmin",
+  createAdminProfile: "/create-AdminProfile",
+};
+
 const wishlist = {
   savewishlist: "/SaveWishList",
   removewishlist: "/removeWishList",
@@ -62,6 +70,7 @@ const flashdeals = {
 
 module.exports = {
   user,
+  admin,
   brand,
   category,
   product,

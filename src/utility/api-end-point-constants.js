@@ -42,6 +42,7 @@ const review = {
 
 const category = {
   category: "/category",
+  allCategories: "/categories",
 };
 
 const product = {

@@ -10,4 +10,9 @@ categoryRouter.post(
   categoryControllers.createCategory
 );
 
+categoryRouter.get(
+  categoryEndPoints.allCategories,
+  categoryControllers.getAllCategory
+);
+
 module.exports = categoryRouter;

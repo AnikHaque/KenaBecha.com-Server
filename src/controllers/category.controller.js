@@ -24,6 +24,27 @@ const createCategory = async (req, res) => {
   }
 };
 
+const getAllCategory = async (req, res) => {
+  try {
+    const Categories = await categoryServices.getAllCategoryFromDb();
+
+    sendResponse(res, {
+      statusCode: 201,
+      success: true,
+      message: "Categories retrieved successfully",
+      data: Categories,
+    });
+  } catch (err) {
+    sendResponse(res, {
+      statusCode: err.statusCode || 500,
+      success: false,
+      message: err.message || "Internal Server Error",
+      data: null,
+    });
+  }
+};
+
 module.exports = {
   createCategory,
+  getAllCategory,
 };

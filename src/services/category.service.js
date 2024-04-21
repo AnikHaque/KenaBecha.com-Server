@@ -5,8 +5,14 @@ const createCategoryIntoDb = async (payload) => {
   return resp;
 };
 
+const getAllCategoryFromDb = async () => {
+  let data = await CategoryModel.find();
+  return data;
+};
+
 const categoryServices = {
   createCategoryIntoDb,
+  getAllCategoryFromDb,
 };
 
 module.exports = categoryServices;

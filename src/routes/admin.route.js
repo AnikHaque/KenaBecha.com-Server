@@ -12,6 +12,10 @@ adminRouter.post(
   adminControllers.verifyOTPAndCreateAdminAccount
 );
 adminRouter.post(adminEndPoints.loginAdmin, adminControllers.adminLogin);
-adminRouter.post(adminEndPoints.logoutAdmin, adminControllers.adminLogout);
+adminRouter.post(
+  adminEndPoints.logoutAdmin,
+  AuthVerificationMiddleware,
+  adminControllers.adminLogout
+);
 
 module.exports = adminRouter;

@@ -21,6 +21,7 @@ const reviewRouter = require("./src/routes/review.route");
 const wishRouter = require("./src/routes/wishlist.route");
 const cartRouter = require("./src/routes/cart.route");
 const invoiceRouter = require("./src/routes/invoice.route");
+const paymentRouter = require("./src/routes/payment.route");
 
 const app = express();
 
@@ -52,6 +53,7 @@ app.use(reviewRouter);
 app.use(wishRouter);
 app.use(cartRouter);
 app.use(invoiceRouter);
+app.use(paymentRouter);
 
 app.get("/", (req, res) => {
   res.send("Hi Next Level Developer !");

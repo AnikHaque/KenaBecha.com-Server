@@ -26,8 +26,8 @@ const invoice = {
 
 const payment = {
   paymentSuccess: "/PaymentSuccess/:trxID",
-  paymentFail: "/PaymentCancel/:trxID",
-  paymentCancel: "/PaymentFail/:trxID",
+  paymentFail: "/PaymentFail/:trxID",
+  paymentCancel: "/PaymentCancel/:trxID  ",
   paymentIPN: "/PaymentIPN/:trxID",
 };
 

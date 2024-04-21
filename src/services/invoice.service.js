@@ -98,48 +98,48 @@ const CreateInvoiceService = async (req) => {
 
   // //=============Step 07: Prepare SSL Payment====================================================================================
 
-  // let PaymentSettings = await PaymentSettingModel.find();
+  let PaymentSettings = await PaymentSettingModel.find();
 
-  // const form = new FormData();
-  // form.append("store_id", PaymentSettings[0]["store_id"]);
-  // form.append("store_passwd", PaymentSettings[0]["store_passwd"]);
-  // form.append("total_amount", payable.toString());
-  // form.append("currency", PaymentSettings[0]["currency"]);
-  // form.append("tran_id", tran_id);
+  const form = new FormData();
+  form.append("store_id", PaymentSettings[0]["store_id"]);
+  form.append("store_passwd", PaymentSettings[0]["store_passwd"]);
+  form.append("total_amount", payable.toString());
+  form.append("currency", PaymentSettings[0]["currency"]);
+  form.append("tran_id", tran_id);
 
-  // form.append("success_url", `${PaymentSettings[0]["success_url"]}/${tran_id}`);
-  // form.append("fail_url", `${PaymentSettings[0]["fail_url"]}/${tran_id}`);
-  // form.append("cancel_url", `${PaymentSettings[0]["cancel_url"]}/${tran_id}`);
-  // form.append("ipn_url", `${PaymentSettings[0]["ipn_url"]}/${tran_id}`);
+  form.append("success_url", `${PaymentSettings[0]["success_url"]}/${tran_id}`);
+  form.append("fail_url", `${PaymentSettings[0]["fail_url"]}/${tran_id}`);
+  form.append("cancel_url", `${PaymentSettings[0]["cancel_url"]}/${tran_id}`);
+  form.append("ipn_url", `${PaymentSettings[0]["ipn_url"]}/${tran_id}`);
 
-  // form.append("cus_name", Profile[0]["cus_name"]);
-  // form.append("cus_email", cus_email);
-  // form.append("cus_add1", Profile[0]["cus_add"]);
-  // form.append("cus_add2", Profile[0]["cus_add"]);
-  // form.append("cus_city", Profile[0]["cus_city"]);
-  // form.append("cus_state", Profile[0]["cus_state"]);
-  // form.append("cus_postcode", Profile[0]["cus_postcode"]);
-  // form.append("cus_country", Profile[0]["cus_country"]);
-  // form.append("cus_phone", Profile[0]["cus_phone"]);
-  // form.append("cus_fax", Profile[0]["cus_phone"]);
+  form.append("cus_name", Profile[0]["cus_name"]);
+  form.append("cus_email", cus_email);
+  form.append("cus_add1", Profile[0]["cus_add"]);
+  form.append("cus_add2", Profile[0]["cus_add"]);
+  form.append("cus_city", Profile[0]["cus_city"]);
+  form.append("cus_state", Profile[0]["cus_state"]);
+  form.append("cus_postcode", Profile[0]["cus_postcode"]);
+  form.append("cus_country", Profile[0]["cus_country"]);
+  form.append("cus_phone", Profile[0]["cus_phone"]);
+  form.append("cus_fax", Profile[0]["cus_phone"]);
 
-  // form.append("shipping_method", "YES");
-  // form.append("ship_name", Profile[0]["ship_name"]);
-  // form.append("ship_add1", Profile[0]["ship_add"]);
-  // form.append("ship_add2", Profile[0]["ship_add"]);
-  // form.append("ship_city", Profile[0]["ship_city"]);
-  // form.append("ship_state", Profile[0]["ship_state"]);
-  // form.append("ship_country", Profile[0]["ship_country"]);
-  // form.append("ship_postcode", Profile[0]["ship_postcode"]);
+  form.append("shipping_method", "YES");
+  form.append("ship_name", Profile[0]["ship_name"]);
+  form.append("ship_add1", Profile[0]["ship_add"]);
+  form.append("ship_add2", Profile[0]["ship_add"]);
+  form.append("ship_city", Profile[0]["ship_city"]);
+  form.append("ship_state", Profile[0]["ship_state"]);
+  form.append("ship_country", Profile[0]["ship_country"]);
+  form.append("ship_postcode", Profile[0]["ship_postcode"]);
 
-  // form.append("product_name", "According Invoice");
-  // form.append("product_category", "According Invoice");
-  // form.append("product_profile", "According Invoice");
-  // form.append("product_amount", "According Invoice");
+  form.append("product_name", "According Invoice");
+  form.append("product_category", "According Invoice");
+  form.append("product_profile", "According Invoice");
+  form.append("product_amount", "According Invoice");
 
-  // let SSLRes = await axios.post(PaymentSettings[0]["init_url"], form);
+  let SSLRes = await axios.post(PaymentSettings[0]["init_url"], form);
 
-  return { status: "success", data: invoice_id };
+  return { status: "success", data: SSLRes.data };
 };
 
 const PaymentSuccessService = async (req) => {

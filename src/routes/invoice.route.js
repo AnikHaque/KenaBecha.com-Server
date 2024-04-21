@@ -12,4 +12,16 @@ invoiceRouter.post(
   invoiceControllers.CreateInvoice
 );
 
+invoiceRouter.get(
+  invoiceEndPoints.showInvoiceList,
+  AuthVerificationMiddleware,
+  invoiceControllers.InvoiceList
+);
+
+invoiceRouter.get(
+  invoiceEndPoints.invoiceProductList,
+  AuthVerificationMiddleware,
+  invoiceControllers.InvoiceProductList
+);
+
 module.exports = invoiceRouter;

@@ -20,6 +20,15 @@ const cartlist = {
 
 const invoice = {
   createinvoice: "/CreateInvoice",
+  showInvoiceList: "/InvoiceList",
+  invoiceProductList: "/InvoiceProductList/:invoice_id",
+};
+
+const payment = {
+  paymentSuccess: "/PaymentSuccess/:trxID",
+  paymentFail: "/PaymentCancel/:trxID",
+  paymentCancel: "/PaymentFail/:trxID",
+  paymentIPN: "/PaymentIPN/:trxID",
 };
 
 const brand = {
@@ -59,4 +68,5 @@ module.exports = {
   wishlist,
   cartlist,
   invoice,
+  payment,
 };

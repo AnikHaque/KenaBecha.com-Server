@@ -18,6 +18,10 @@ const cartlist = {
   showcartlist: "/CartList",
 };
 
+const invoice = {
+  createinvoice: "/CreateInvoice",
+};
+
 const brand = {
   brand: "/brand",
   allBrands: "/brands",
@@ -54,4 +58,5 @@ module.exports = {
   review,
   wishlist,
   cartlist,
+  invoice,
 };

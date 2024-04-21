@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const DataSchema = mongoose.Schema(
   {
-    productID: {
+    productID: { type: mongoose.Schema.Types.ObjectId, required: true },
+    userID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "products",
+      ref: "users",
       required: true,
     },
-    email: { type: String },
     des: { type: String, required: true },
     rating: { type: String, required: true },
   },

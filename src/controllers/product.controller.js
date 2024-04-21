@@ -108,6 +108,12 @@ const getProductsDetails = async (req, res) => {
 
 const productReview = async (req, res) => {
   let result = await productServices.CreateReviewService(req);
+  console.log(result);
+  return res.status(200).json(result);
+};
+
+const ProductReviewList = async (req, res) => {
+  let result = await productServices.ReviewListService(req);
   return res.status(200).json(result);
 };
 
@@ -119,4 +125,5 @@ module.exports = {
   getProductsByRemark,
   getProductsDetails,
   productReview,
+  ProductReviewList,
 };

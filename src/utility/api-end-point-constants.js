@@ -52,6 +52,7 @@ const product = {
   byRemark: "/productsByRemark/:Remark",
   details: "/ProductDetails/:ProductID",
   review: "/CreateReview",
+  showReview: "/ProductReviewList/:ProductID",
 };
 
 const flashdeals = {

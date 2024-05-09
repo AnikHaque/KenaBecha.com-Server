@@ -60,6 +60,7 @@ const product = {
   byCategory: "/productsByCategory/:CategoryID",
   byRemark: "/productsByRemark/:Remark",
   details: "/ProductDetails/:ProductID",
+  productFilter: "/ProductListByFilter",
   review: "/CreateReview",
   showReview: "/ProductReviewList/:ProductID",
 };

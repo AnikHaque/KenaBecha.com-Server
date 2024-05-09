@@ -7,6 +7,10 @@ const productRouter = express.Router();
 const productEndPoints = apiEndPoints.product;
 
 productRouter.post(productEndPoints.product, productControllers.createProduct);
+productRouter.post(
+  productEndPoints.productFilter,
+  productControllers.ProductFilter
+);
 
 productRouter.post(
   productEndPoints.review,

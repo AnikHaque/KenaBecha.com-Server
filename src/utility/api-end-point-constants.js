@@ -59,8 +59,9 @@ const product = {
   byBrands: "/productsByBrand/:BrandID",
   byCategory: "/productsByCategory/:CategoryID",
   byRemark: "/productsByRemark/:Remark",
+  byKeyword: "/ProductListByKeyword/:Keyword",
   details: "/ProductDetails/:ProductID",
-  productFilter: "/ProductListByFilter",
+  productFilterList: "/ProductListByFilter",
   review: "/CreateReview",
   showReview: "/ProductReviewList/:ProductID",
 };

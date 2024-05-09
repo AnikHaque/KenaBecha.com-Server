@@ -8,7 +8,7 @@ const productEndPoints = apiEndPoints.product;
 
 productRouter.post(productEndPoints.product, productControllers.createProduct);
 productRouter.post(
-  productEndPoints.productFilter,
+  productEndPoints.productFilterList,
   productControllers.ProductFilter
 );
 

@@ -117,6 +117,11 @@ const ProductReviewList = async (req, res) => {
   return res.status(200).json(result);
 };
 
+const ProductFilter = async (req, res) => {
+  let result = await productServices.ListByFilterService(req);
+  return res.status(200).json(result);
+};
+
 module.exports = {
   createProduct,
   getAllProducts,
@@ -126,4 +131,5 @@ module.exports = {
   getProductsDetails,
   productReview,
   ProductReviewList,
+  ProductFilter,
 };

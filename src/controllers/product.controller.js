@@ -93,6 +93,18 @@ const getProductsByRemark = async (req, res) => {
   });
 };
 
+const getProductsByKeyword = async (req, res) => {
+  // Call the service function to fetch all products with populated category and brand details
+  const productByRemark = await productServices.ListByKeywordService(req);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Products by remark retrieved successfully",
+    data: productByRemark,
+  });
+};
+
 // product details
 const getProductsDetails = async (req, res) => {
   // Call the service function to fetch all products with populated category and brand details
@@ -128,6 +140,7 @@ module.exports = {
   getProductsByBrand,
   getProductsByCategory,
   getProductsByRemark,
+  getProductsByKeyword,
   getProductsDetails,
   productReview,
   ProductReviewList,

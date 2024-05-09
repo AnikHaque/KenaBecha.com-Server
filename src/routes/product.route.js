@@ -24,6 +24,11 @@ productRouter.get(
 );
 
 productRouter.get(
+  productEndPoints.byKeyword,
+  productControllers.getProductsByKeyword
+);
+
+productRouter.get(
   productEndPoints.details,
   productControllers.getProductsDetails
 );

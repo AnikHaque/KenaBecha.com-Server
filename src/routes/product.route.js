@@ -19,10 +19,10 @@ productRouter.get(
   productControllers.getAllProducts
 );
 
-// productRouter.get(
-//   productEndPoints.showReview,
-//   productControllers.ProductReviewList
-// );
+productRouter.get(
+  productEndPoints.details,
+  productControllers.getProductsDetails
+);
 
 productRouter.get(
   productEndPoints.byBrands,

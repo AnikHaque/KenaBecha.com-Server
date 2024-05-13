@@ -1,9 +1,9 @@
 const jwt = require("jsonwebtoken");
 
-exports.EncodeToken = (email, user_id) => {
+exports.EncodeToken = (email, user_id, role) => {
   let KEY = "123-ABC-XYZ";
   let EXPIRE = { expiresIn: "24h" };
-  let PAYLOAD = { email: email, user_id: user_id };
+  let PAYLOAD = { email: email, user_id: user_id, role: role };
   return jwt.sign(PAYLOAD, KEY, EXPIRE);
 };
 

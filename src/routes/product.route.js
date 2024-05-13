@@ -13,6 +13,11 @@ productRouter.post(
 );
 
 productRouter.post(
+  productEndPoints.createProductDetails,
+  productControllers.createDetailsController
+);
+
+productRouter.post(
   productEndPoints.review,
   AuthVerificationMiddleware,
   productControllers.productReview

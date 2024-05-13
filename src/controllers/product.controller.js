@@ -134,6 +134,20 @@ const ProductFilter = async (req, res) => {
   return res.status(200).json(result);
 };
 
+const createDetailsController = async (req, res) => {
+  try {
+    const detailData = req.body;
+
+    // Call service to create details
+    const newDetails = await productServices.createDetails(detailData);
+
+    res.status(201).json(newDetails);
+  } catch (err) {
+    console.error("Error in createDetailsController:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 module.exports = {
   createProduct,
   getAllProducts,
@@ -145,4 +159,5 @@ module.exports = {
   productReview,
   ProductReviewList,
   ProductFilter,
+  createDetailsController,
 };

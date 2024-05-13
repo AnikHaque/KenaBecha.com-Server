@@ -1,6 +1,7 @@
 const ProductModel = require("../models/product.model");
 const mongoose = require("mongoose");
 const ReviewModel = require("../models/review.model");
+const ProductDetailsModel = require("../models/productDetails.model");
 
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -213,7 +214,13 @@ const ListByKeywordService = async (req) => {
 
 const DetailsService = async (req) => {
   try {
-    let ProductID = new ObjectId(req.params.ProductID);
+    // Validate ProductID format
+    const productId = req.params.ProductID;
+    if (!/^[0-9a-fA-F]{24}$/.test(productId)) {
+      throw new Error("Invalid ProductID format");
+    }
+
+    let ProductID = new ObjectId(productId);
     let MatchStage = { $match: { _id: ProductID } };
 
     let JoinWithBrandStage = {
@@ -267,10 +274,23 @@ const DetailsService = async (req) => {
 
     return data;
   } catch (err) {
+    // Handle errors gracefully
     throw new Error(err);
   }
 };
+const createDetails = async (detailData) => {
+  try {
+    // Create new product details
+    const newDetails = new ProductDetailsModel(detailData);
 
+    // Save the details to the database
+    await newDetails.save();
+
+    return newDetails;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
 const CreateReviewService = async (req) => {
   try {
     let user_id = req.headers.user_id;
@@ -400,6 +420,7 @@ const productServices = {
   CreateReviewService,
   ReviewListService,
   ListByFilterService,
+  createDetails,
 };
 
 module.exports = productServices;

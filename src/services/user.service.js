@@ -1,6 +1,6 @@
 const userModel = require("../models/user.model");
 const ProfileModel = require("../models/profile.model");
-const { EncodeToken } = require("../utility/TokenHelper");
+const { EncodeToken, DecodeToken } = require("../utility/TokenHelper");
 const { UserOTPService } = require("./auth.service");
 const bcrypt = require("bcrypt");
 
@@ -80,10 +80,22 @@ const loginUser = async (email, password) => {
       return { status: "fail", message: "Incorrect password" };
     }
 
-    // Password matched, generate JWT token
-    const token = EncodeToken(email, user._id.toString());
+    // Password matched, generate JWT token using EncodeToken function
+    const token = EncodeToken(email, user._id.toString(), user.role);
 
-    return { status: "success", message: "Login successful", token };
+    // Decode token to retrieve user information
+    const decodedToken = DecodeToken(token);
+
+    if (!decodedToken) {
+      return { status: "fail", message: "Failed to decode token" };
+    }
+
+    return {
+      status: "success",
+      message: "Login successful",
+      token,
+      user: decodedToken,
+    };
   } catch (error) {
     console.error("Error during login:", error);
     return { status: "fail", message: "Error during login" };

@@ -55,6 +55,7 @@ const category = {
 
 const product = {
   product: "/product",
+  createProductDetails: "/create-productDetails",
   allProducts: "/products",
   byBrands: "/productsByBrand/:BrandID",
   byCategory: "/productsByCategory/:CategoryID",

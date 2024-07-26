@@ -7,5 +7,6 @@ const courseRouter = express.Router();
 const courseEndPoints = apiEndPoints.course;
 
 courseRouter.post(courseEndPoints.course, courseControllers.createCourse);
+courseRouter.get(courseEndPoints.allCourses, courseControllers.getAllCourses);
 
 module.exports = courseRouter;

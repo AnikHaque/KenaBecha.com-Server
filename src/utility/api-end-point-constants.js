@@ -69,6 +69,7 @@ const product = {
 
 const course = {
   course: "/course",
+  allCourses: "/courses",
 };
 
 const flashdeals = {

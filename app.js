@@ -21,6 +21,7 @@ const cartRouter = require("./src/routes/cart.route");
 const invoiceRouter = require("./src/routes/invoice.route");
 const paymentRouter = require("./src/routes/payment.route");
 const adminRouter = require("./src/routes/admin.route");
+const AuthVerification = require("./src/middlewares/AuthVerification");
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use(paymentRouter);
 app.get("/", (req, res) => {
   res.send("Hi Next Level Developer !");
 });
+
 app.use(globalErrorHandler);
 
 module.exports = app;

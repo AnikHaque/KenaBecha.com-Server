@@ -61,7 +61,7 @@ const CartListService = async (req) => {
       projectionStage,
     ]);
 
-    return { status: "success", data: data };
+    return { status: "successful", data: data };
   } catch (e) {
     return { status: "fail", message: "Something Went Wrong !" };
   }
@@ -72,8 +72,12 @@ const SaveCartListService = async (req) => {
     let user_id = req.headers.user_id;
     let reqBody = req.body;
     reqBody.userID = user_id;
-    await CartModel.create(reqBody);
-    return { status: "success", message: "Cart List Create Success" };
+    const data = await CartModel.create(reqBody);
+    return {
+      status: "success",
+      message: "Cart List Create Success",
+      data: data,
+    };
   } catch (e) {
     return { status: "fail", message: "Something Went Wrong !" };
   }

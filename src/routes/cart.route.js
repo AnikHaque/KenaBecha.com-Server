@@ -12,17 +12,9 @@ cartRouter.post(
   cartControllers.SaveCartList
 );
 
-cartRouter.patch(
-  cartEndPoints.updatecartlist,
-  AuthVerificationMiddleware,
-  cartControllers.UpdateCartList
-);
+cartRouter.patch(cartEndPoints.updatecartlist, cartControllers.UpdateCartList);
 
-cartRouter.delete(
-  cartEndPoints.removecartlist,
-  AuthVerificationMiddleware,
-  cartControllers.RemoveCartList
-);
+cartRouter.delete(cartEndPoints.removecartlist, cartControllers.RemoveCartList);
 
 cartRouter.get(
   cartEndPoints.showcartlist,

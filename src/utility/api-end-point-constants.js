@@ -67,6 +67,10 @@ const product = {
   showReview: "/ProductReviewList/:ProductID",
 };
 
+const course = {
+  course: "/course",
+};
+
 const flashdeals = {
   flashdeals: "/flashdeal",
 };
@@ -83,4 +87,5 @@ module.exports = {
   cartlist,
   invoice,
   payment,
+  course,
 };

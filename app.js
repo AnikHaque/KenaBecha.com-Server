@@ -22,6 +22,7 @@ const invoiceRouter = require("./src/routes/invoice.route");
 const paymentRouter = require("./src/routes/payment.route");
 const adminRouter = require("./src/routes/admin.route");
 const AuthVerification = require("./src/middlewares/AuthVerification");
+const courseRouter = require("./src/routes/course.route");
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use(adminRouter);
 app.use(brandRouter);
 app.use(categoryRouter);
 app.use(productRouter);
+app.use(courseRouter);
 app.use(flashDealsRouter);
 app.use(wishRouter);
 app.use(cartRouter);

@@ -70,6 +70,8 @@ const product = {
 const course = {
   course: "/course",
   allCourses: "/courses",
+  updateCourse: "/courses/:id",
+  deleteCourse: "/courses/:id",
 };
 
 const flashdeals = {

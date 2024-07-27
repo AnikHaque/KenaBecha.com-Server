@@ -14,6 +14,14 @@ const admin = {
   createAdminProfile: "/create-AdminProfile",
 };
 
+const instructor = {
+  instructor: "/registerInstructor",
+  verifyInstructor: "/verifyOtpInstructor",
+  loginInstructor: "/loginInstructor",
+  logoutInstructor: "/logoutInstructor",
+  createInstructorProfile: "/create-InstructorProfile",
+};
+
 const wishlist = {
   savewishlist: "/SaveWishList",
   removewishlist: "/removeWishList",
@@ -81,6 +89,7 @@ const flashdeals = {
 module.exports = {
   user,
   admin,
+  instructor,
   brand,
   category,
   product,

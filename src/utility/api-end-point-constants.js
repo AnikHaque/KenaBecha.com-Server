@@ -14,14 +14,6 @@ const admin = {
   createAdminProfile: "/create-AdminProfile",
 };
 
-const instructor = {
-  instructor: "/registerInstructor",
-  verifyInstructor: "/verifyOtpInstructor",
-  loginInstructor: "/loginInstructor",
-  logoutInstructor: "/logoutInstructor",
-  createInstructorProfile: "/create-InstructorProfile",
-};
-
 const wishlist = {
   savewishlist: "/SaveWishList",
   removewishlist: "/removeWishList",
@@ -59,6 +51,11 @@ const review = {
 const category = {
   category: "/category",
   allCategories: "/categories",
+};
+
+const blog = {
+  blog: "/blog",
+  allBlogs: "/blogs",
 };
 
 const product = {
@@ -100,4 +97,5 @@ module.exports = {
   invoice,
   payment,
   course,
+  blog,
 };

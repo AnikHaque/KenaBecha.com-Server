@@ -23,7 +23,7 @@ const paymentRouter = require("./src/routes/payment.route");
 const adminRouter = require("./src/routes/admin.route");
 const AuthVerification = require("./src/middlewares/AuthVerification");
 const courseRouter = require("./src/routes/course.route");
-const instructorRouter = require("./src/routes/instructor.route");
+const blogRouter = require("./src/routes/blog.route");
 
 const app = express();
 
@@ -48,9 +48,9 @@ dbConnection().catch((err) => console.log("Error occured::", err));
 
 app.use(userRouter);
 app.use(adminRouter);
-app.use(instructorRouter);
 app.use(brandRouter);
 app.use(categoryRouter);
+app.use(blogRouter);
 app.use(productRouter);
 app.use(courseRouter);
 app.use(flashDealsRouter);

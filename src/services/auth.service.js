@@ -121,7 +121,7 @@ const VerifyAdminOTPService = async (email, otp) => {
     console.log("Admin found in database:", admin);
 
     if (admin) {
-      const token = EncodeToken(email, user._id.toString());
+      const token = EncodeToken(email, admin._id.toString());
       await adminModel.updateOne({ email: email }, { $set: { otp: "0" } });
       await adminModel.updateOne({ email: email }, { $unset: { otp: 1 } }); // Remove the OTP field
       return { status: "success", message: "Valid OTP", token: token };

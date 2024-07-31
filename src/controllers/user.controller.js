@@ -1,9 +1,11 @@
 const {
   registerUserWithOTP,
   createUserAccount,
+  getAllUserFromDb,
   loginUser,
   SaveProfileService,
 } = require("../services/user.service");
+const sendResponse = require("../utility/sendResponse");
 
 const userRegistration = async (req, res) => {
   try {
@@ -37,6 +39,26 @@ const verifyOTPAndCreateAccount = async (req, res) => {
     return res.status(500).json({
       status: "fail",
       message: "Error verifying OTP and creating account",
+    });
+  }
+};
+
+const getAllUsers = async (req, res) => {
+  try {
+    const Users = await getAllUserFromDb();
+
+    sendResponse(res, {
+      statusCode: 201,
+      success: true,
+      message: "Users retrieved successfully",
+      data: Users,
+    });
+  } catch (err) {
+    sendResponse(res, {
+      statusCode: err.statusCode || 500,
+      success: false,
+      message: err.message || "Internal Server Error",
+      data: null,
     });
   }
 };
@@ -105,4 +127,5 @@ module.exports = {
   userLogout,
   CreateProfile,
   UpdateProfile,
+  getAllUsers,
 };

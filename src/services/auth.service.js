@@ -4,7 +4,6 @@ const UserModel = require("../models/user.model");
 const EmailSend = require("../utility/EmailHelper");
 const { EncodeToken } = require("../utility/TokenHelper");
 const adminModel = require("../models/admin.model");
-const instructorModel = require("../models/instructor.model");
 
 const UserOTPService = async (email) => {
   try {

@@ -1,5 +1,6 @@
 const user = {
   user: "/register",
+  getUsers: "/users",
   verify: "/verifyOtp",
   login: "/login",
   logout: "/logout",
@@ -53,6 +54,12 @@ const category = {
   allCategories: "/categories",
 };
 
+const enrollment = {
+  enrollment: "/enrollment",
+  allEnrollments: "/enrollments",
+  singleEnrollment: "/enrollments/user/:userId",
+};
+
 const blog = {
   blog: "/blog",
   allBlogs: "/blogs",
@@ -86,9 +93,9 @@ const flashdeals = {
 module.exports = {
   user,
   admin,
-  instructor,
   brand,
   category,
+  enrollment,
   product,
   flashdeals,
   review,

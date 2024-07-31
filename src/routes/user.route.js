@@ -7,6 +7,7 @@ const userRouter = express.Router();
 const userEndPoints = apiEndPoints.user;
 
 userRouter.post(userEndPoints.user, userControllers.userRegistration);
+userRouter.get(userEndPoints.getUsers, userControllers.getAllUsers);
 userRouter.post(
   userEndPoints.verify,
   userControllers.verifyOTPAndCreateAccount

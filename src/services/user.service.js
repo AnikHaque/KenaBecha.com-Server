@@ -66,6 +66,11 @@ const createUserAccount = async (userTempData) => {
   }
 };
 
+const getAllUserFromDb = async () => {
+  let data = await userModel.find();
+  return data;
+};
+
 const loginUser = async (email, password) => {
   try {
     // Find user by email
@@ -129,4 +134,5 @@ module.exports = {
   createUserAccount,
   loginUser,
   SaveProfileService,
+  getAllUserFromDb,
 };

@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 
-const ObjectId = mongoose.Types.ObjectId;
-const enrollmentModel = require("../models/enrollment.model");
-
 // create enrollment
 const createEnrollmentIntoDb = async (payload) => {
   const enrollment = await enrollmentModel(payload);

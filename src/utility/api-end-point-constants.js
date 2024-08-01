@@ -54,6 +54,11 @@ const category = {
   allCategories: "/categories",
 };
 
+const blogcategory = {
+  blogcategory: "/blogcategory",
+  allBlogCategories: "/blogcategories",
+};
+
 const enrollment = {
   enrollment: "/create-enrollment",
   allEnrollments: "/get-enrollments",
@@ -112,4 +117,5 @@ module.exports = {
   payment,
   course,
   blog,
+  blogcategory,
 };

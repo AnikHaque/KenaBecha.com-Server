@@ -26,6 +26,7 @@ const courseRouter = require("./src/routes/course.route");
 const blogRouter = require("./src/routes/blog.route");
 const enrollmentRouter = require("./src/routes/enrollment.route");
 const fullstackenrollmentRouter = require("./src/routes/fullstack.route");
+const blogcategoryRouter = require("./src/routes/blogcategory.route");
 
 const app = express();
 
@@ -55,6 +56,7 @@ app.use(categoryRouter);
 app.use(enrollmentRouter);
 app.use(fullstackenrollmentRouter);
 app.use(blogRouter);
+app.use(blogcategoryRouter);
 app.use(productRouter);
 app.use(courseRouter);
 app.use(flashDealsRouter);

@@ -55,9 +55,15 @@ const category = {
 };
 
 const enrollment = {
-  enrollment: "/enrollment",
-  allEnrollments: "/enrollments",
-  singleEnrollment: "/enrollments/user/:userId",
+  enrollment: "/create-enrollment",
+  allEnrollments: "/get-enrollments",
+  deleteEnrollment: "/enrollments/:id",
+};
+
+const fullstack = {
+  fullstack: "/fullstack",
+  allFullstacks: "/fullstacks",
+  singlefullstack: "/fullstack/:email",
 };
 
 const blog = {
@@ -96,6 +102,7 @@ module.exports = {
   brand,
   category,
   enrollment,
+  fullstack,
   product,
   flashdeals,
   review,

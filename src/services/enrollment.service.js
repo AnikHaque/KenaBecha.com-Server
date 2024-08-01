@@ -1,18 +1,52 @@
-const enrollmentModel = require("../models/Enrollment.model");
+const mongoose = require("mongoose");
 
+const ObjectId = mongoose.Types.ObjectId;
+const enrollmentModel = require("../models/enrollment.model");
+
+// create enrollment
 const createEnrollmentIntoDb = async (payload) => {
-  const resp = await enrollmentModel.create(payload);
-  return resp;
+  const enrollment = await enrollmentModel(payload);
+
+  return enrollment;
 };
 
-const getAllEnrollmentFromDb = async () => {
-  let data = await enrollmentModel.find();
-  return data;
+// find all enrollments
+const findAllEnrollmentsFromDb = async () => {
+  const enrollments = await enrollmentModel.find();
+  return enrollments;
+};
+
+// // Update course by ID
+// const updateCourseInDb = async (courseId, payload) => {
+//   if (!ObjectId.isValid(courseId)) {
+//     throw new Error("Invalid course ID");
+//   }
+
+//   const updatedCourse = await CourseModel.findByIdAndUpdate(courseId, payload, {
+//     new: true, // Return the updated document
+//     runValidators: true, // Validate the update operation
+//   });
+
+//   return updatedCourse;
+// };
+
+// Delete enrollment by ID
+const deleteEnrollmentFromDb = async (enrollmentId) => {
+  if (!ObjectId.isValid(enrollmentId)) {
+    throw new Error("Invalid enrollment ID");
+  }
+
+  const deletedEnrollment = await enrollmentModel.findByIdAndDelete(
+    enrollmentId
+  );
+
+  return deletedEnrollment;
 };
 
 const enrollmentServices = {
   createEnrollmentIntoDb,
-  getAllEnrollmentFromDb,
+  findAllEnrollmentsFromDb,
+  deleteEnrollmentFromDb,
 };
 
 module.exports = enrollmentServices;

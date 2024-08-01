@@ -1,6 +1,7 @@
 const express = require("express");
 const enrollmentControllers = require("../controllers/enrollment.controller");
 const apiEndPoints = require("../utility/api-end-point-constants");
+const AuthVerification = require("../middlewares/AuthVerification");
 
 const enrollmentRouter = express.Router();
 const enrollmentEndPoints = apiEndPoints.enrollment;
@@ -15,10 +16,15 @@ enrollmentRouter.get(
   enrollmentControllers.getAllEnrollments
 );
 
-enrollmentRouter.get(
-  enrollmentEndPoints.singleEnrollment,
-  enrollmentControllers.getUserEnrollments
+enrollmentRouter.delete(
+  enrollmentEndPoints.deleteEnrollment,
+  enrollmentControllers.deletedEnrollment
 );
+
+// enrollmentRouter.get(
+//   enrollmentEndPoints.singleEnrollment,
+//   enrollmentControllers.getMyEnrollments
+// );
 
 // enrollmentRouter.get(
 //   enrollmentEndPoints.allCategories,

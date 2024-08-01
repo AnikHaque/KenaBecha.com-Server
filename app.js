@@ -25,6 +25,7 @@ const AuthVerification = require("./src/middlewares/AuthVerification");
 const courseRouter = require("./src/routes/course.route");
 const blogRouter = require("./src/routes/blog.route");
 const enrollmentRouter = require("./src/routes/enrollment.route");
+const fullstackenrollmentRouter = require("./src/routes/fullstack.route");
 
 const app = express();
 
@@ -52,6 +53,7 @@ app.use(adminRouter);
 app.use(brandRouter);
 app.use(categoryRouter);
 app.use(enrollmentRouter);
+app.use(fullstackenrollmentRouter);
 app.use(blogRouter);
 app.use(productRouter);
 app.use(courseRouter);

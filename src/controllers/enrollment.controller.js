@@ -1,13 +1,12 @@
-const enrollmentServices = require("../services/enrollment.service");
+const enrollmentService = require("../services/enrollment.service");
 const sendResponse = require("../utility/sendResponse");
 
+// create enrollment
 const createEnrollment = async (req, res) => {
   const enrollmentData = req.body;
 
   try {
-    const resp = await enrollmentServices.createEnrollmentIntoDb(
-      enrollmentData
-    );
+    const resp = await enrollmentService.createEnrollmentIntoDb(enrollmentData);
 
     sendResponse(res, {
       statusCode: 201,
@@ -16,6 +15,7 @@ const createEnrollment = async (req, res) => {
       data: resp,
     });
   } catch (err) {
+    // Handle errors here
     sendResponse(res, {
       statusCode: err.statusCode || 500,
       success: false,
@@ -25,17 +25,20 @@ const createEnrollment = async (req, res) => {
   }
 };
 
+// get all enrollments
 const getAllEnrollments = async (req, res) => {
   try {
-    const data = await enrollmentServices.getAllEnrollmentFromDb();
+    // Call the service function to fetch all products with populated category and brand details
+    const enrollments = await enrollmentService.findAllEnrollmentsFromDb();
 
     sendResponse(res, {
-      statusCode: 200,
+      statusCode: 201,
       success: true,
-      message: "All enrollments retrieved successfully",
-      data: data,
+      message: "Enrollments retrieved successfully",
+      data: enrollments,
     });
   } catch (err) {
+    // Handle errors here
     sendResponse(res, {
       statusCode: err.statusCode || 500,
       success: false,
@@ -45,17 +48,57 @@ const getAllEnrollments = async (req, res) => {
   }
 };
 
-const getUserEnrollments = async (req, res) => {
-  const { userId } = req.params;
+// const getMyEnrollments = async (req, res) => {
+//   try {
+//     const userId = req.user._id;
+//     const enrollments = await enrollmentService.getEnrollmentsByUser(userId);
+//     res.status(200).json({ success: true, enrollments });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
+
+// const updateEnrollmentStatus = async (req, res) => {
+//   try {
+//     const { enrollmentId, status } = req.body;
+//     const enrollment = await enrollmentService.updateEnrollmentStatus(
+//       enrollmentId,
+//       status
+//     );
+//     if (!enrollment) {
+//       return res
+//         .status(404)
+//         .json({ success: false, message: "Enrollment not found" });
+//     }
+//     res.status(200).json({ success: true, enrollment });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
+// Delete course
+const deletedEnrollment = async (req, res) => {
+  const enrollmentId = req.params.id;
 
   try {
-    const data = await enrollmentServices.getUserEnrollmentsFromDb(userId);
+    const deletedEnrollments = await enrollmentService.deleteEnrollmentFromDb(
+      enrollmentId
+    );
+
+    if (!deletedEnrollments) {
+      sendResponse(res, {
+        statusCode: 404,
+        success: false,
+        message: "enrollment not found",
+        data: null,
+      });
+      return;
+    }
 
     sendResponse(res, {
       statusCode: 200,
       success: true,
-      message: "User enrollments retrieved successfully",
-      data: data,
+      message: "enrollment deleted successfully",
+      data: deletedCourse,
     });
   } catch (err) {
     sendResponse(res, {
@@ -70,5 +113,5 @@ const getUserEnrollments = async (req, res) => {
 module.exports = {
   createEnrollment,
   getAllEnrollments,
-  getUserEnrollments,
+  deletedEnrollment,
 };

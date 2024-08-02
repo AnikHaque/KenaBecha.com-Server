@@ -16,6 +16,11 @@ enrollmentRouter.get(
   enrollmentControllers.getAllEnrollments
 );
 
+enrollmentRouter.get(
+  enrollmentEndPoints.allEnrollments,
+  enrollmentControllers.getAllEnrollments
+);
+
 enrollmentRouter.delete(
   enrollmentEndPoints.deleteEnrollment,
   enrollmentControllers.deletedEnrollment

@@ -1,14 +1,10 @@
 const mongoose = require("mongoose");
 const DataSchema = mongoose.Schema(
   {
-    productID: { type: mongoose.Schema.Types.ObjectId, required: true },
-    userID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-      required: true,
-    },
+    name: { type: String, required: true },
+    image: { type: String, required: true },
+    designation: { type: String, required: true },
     des: { type: String, required: true },
-    rating: { type: String, required: true },
   },
   { timestamps: true, versionKey: false }
 );

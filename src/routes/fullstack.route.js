@@ -20,4 +20,9 @@ fullstackRouter.get(
   fullstackControllers.getFullstackByEmail
 );
 
+fullstackRouter.put(
+  fullstackyEndPoints.updateEnrollment,
+  fullstackControllers.updateFullstackEnrollment
+);
+
 module.exports = fullstackRouter;

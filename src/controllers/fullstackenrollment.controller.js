@@ -68,8 +68,45 @@ const getFullstackByEmail = async (req, res) => {
   }
 };
 
+const updateFullstackEnrollment = async (req, res) => {
+  const fullstackId = req.params.id;
+  const updateData = req.body;
+
+  try {
+    const updatedEnrollment = await fullstackServices.updatefullstackInDb(
+      fullstackId,
+      updateData
+    );
+
+    if (!updatedEnrollment) {
+      sendResponse(res, {
+        statusCode: 404,
+        success: false,
+        message: "Enrollment not found",
+        data: null,
+      });
+      return;
+    }
+
+    sendResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: "Enrollment updated successfully",
+      data: updatedCourse,
+    });
+  } catch (err) {
+    sendResponse(res, {
+      statusCode: err.statusCode || 500,
+      success: false,
+      message: err.message || "Internal Server Error",
+      data: null,
+    });
+  }
+};
+
 module.exports = {
   createFullstack,
   getAllFullstack,
   getFullstackByEmail,
+  updateFullstackEnrollment,
 };

@@ -69,6 +69,9 @@ const fullstack = {
   fullstack: "/fullstack",
   allFullstacks: "/fullstacks",
   singlefullstack: "/fullstack/:email",
+  updateEnrollment: "/fullstack/:id",
+
+  
 };
 
 const blog = {

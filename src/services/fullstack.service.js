@@ -15,10 +15,29 @@ const getFullstackEnrollmentsByEmail = async (email) => {
   return data;
 };
 
+// Update enrollment by ID
+const updatefullstackInDb = async (fullstackId, payload) => {
+  if (!ObjectId.isValid(fullstackId)) {
+    throw new Error("Invalid enrollment ID");
+  }
+
+  const updatedEnrollment = await fullstackenrollmentModel.findByIdAndUpdate(
+    fullstackId,
+    payload,
+    {
+      new: true, // Return the updated document
+      runValidators: true, // Validate the update operation
+    }
+  );
+
+  return updatedEnrollment;
+};
+
 const fullstackServices = {
   createfullstackIntoDb,
   getAllfullstackFromDb,
   getFullstackEnrollmentsByEmail,
+  updatefullstackInDb,
 };
 
 module.exports = fullstackServices;

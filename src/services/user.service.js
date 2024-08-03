@@ -107,6 +107,10 @@ const loginUser = async (email, password) => {
   }
 };
 
+const logoutUser = () => {
+  return { status: "success", message: "Logout successful" };
+};
+
 const SaveProfileService = async (req) => {
   try {
     let user_id = req.headers.user_id;
@@ -135,4 +139,5 @@ module.exports = {
   loginUser,
   SaveProfileService,
   getAllUserFromDb,
+  logoutUser,
 };

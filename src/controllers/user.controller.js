@@ -4,6 +4,7 @@ const {
   getAllUserFromDb,
   loginUser,
   SaveProfileService,
+  logoutUser,
 } = require("../services/user.service");
 const sendResponse = require("../utility/sendResponse");
 
@@ -96,12 +97,9 @@ const userLogin = async (req, res) => {
 
 const userLogout = async (req, res) => {
   try {
-    // Clear the token from cookies
     res.clearCookie("token");
-
-    return res
-      .status(200)
-      .json({ status: "success", message: "User logged out successfully" });
+    const logoutResult = logoutUser();
+    return res.status(200).json(logoutResult);
   } catch (error) {
     console.error("Error during logout:", error);
     return res

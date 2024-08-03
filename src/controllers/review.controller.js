@@ -17,7 +17,7 @@ const createReview = async (req, res) => {
 
 const getAllReviews = async (req, res) => {
   try {
-    const reviews = await ReviewModel.getAllReviews();
+    const reviews = await reviewServices.getAllReviewsFromDb();
 
     sendResponse(res, {
       statusCode: 201,

@@ -29,7 +29,7 @@ const getAllFullstack = async (req, res) => {
     const fullstack = await fullstackServices.getAllfullstackFromDb();
 
     sendResponse(res, {
-      statusCode: 201,
+      statusCode: 200, // Changed from 201 to 200 for a successful retrieval
       success: true,
       message: "Fullstack enrollments retrieved successfully",
       data: fullstack,
@@ -92,7 +92,7 @@ const updateFullstackEnrollment = async (req, res) => {
       statusCode: 200,
       success: true,
       message: "Enrollment updated successfully",
-      data: updatedCourse,
+      data: updatedEnrollment,
     });
   } catch (err) {
     sendResponse(res, {

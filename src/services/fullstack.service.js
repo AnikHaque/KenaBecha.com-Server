@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const fullstackenrollmentModel = require("../models/fullstackenrollment.model");
 
 const createfullstackIntoDb = async (payload) => {
@@ -6,18 +7,18 @@ const createfullstackIntoDb = async (payload) => {
 };
 
 const getAllfullstackFromDb = async () => {
-  let data = await fullstackenrollmentModel.find();
+  const data = await fullstackenrollmentModel.find();
   return data;
 };
 
 const getFullstackEnrollmentsByEmail = async (email) => {
-  let data = await fullstackenrollmentModel.find({ email: email });
+  const data = await fullstackenrollmentModel.find({ email: email });
   return data;
 };
 
 // Update enrollment by ID
 const updatefullstackInDb = async (fullstackId, payload) => {
-  if (!ObjectId.isValid(fullstackId)) {
+  if (!mongoose.Types.ObjectId.isValid(fullstackId)) {
     throw new Error("Invalid enrollment ID");
   }
 

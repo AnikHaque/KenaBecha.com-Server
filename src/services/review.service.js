@@ -9,8 +9,14 @@ const createReviewIntoDb = async (payload) => {
   }
 };
 
+const getAllReviewsFromDb = async () => {
+  let data = await ReviewModel.find();
+  return data;
+};
+
 const reviewServices = {
   createReviewIntoDb,
+  getAllReviewsFromDb,
 };
 
 module.exports = reviewServices;

@@ -1,3 +1,4 @@
+const ReviewModel = require("../models/review.model");
 const reviewServices = require("../services/review.service");
 const sendResponse = require("../utility/sendResponse");
 
@@ -14,6 +15,27 @@ const createReview = async (req, res) => {
   });
 };
 
+const getAllReviews = async (req, res) => {
+  try {
+    const reviews = await ReviewModel.getAllReviews();
+
+    sendResponse(res, {
+      statusCode: 201,
+      success: true,
+      message: "  Reviews retrieved successfully",
+      data: reviews,
+    });
+  } catch (err) {
+    sendResponse(res, {
+      statusCode: err.statusCode || 500,
+      success: false,
+      message: err.message || "Internal Server Error",
+      data: null,
+    });
+  }
+};
+
 module.exports = {
   createReview,
+  getAllReviews,
 };

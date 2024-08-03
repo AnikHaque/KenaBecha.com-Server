@@ -7,5 +7,6 @@ const reviewRouter = express.Router();
 const reviewEndPoints = apiEndPoints.review;
 
 reviewRouter.post(reviewEndPoints.review, reviewControllers.createReview);
+reviewRouter.get(reviewEndPoints.allReviews, reviewControllers.getAllReviews);
 
 module.exports = reviewRouter;

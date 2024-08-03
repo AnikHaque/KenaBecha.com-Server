@@ -47,6 +47,7 @@ const brand = {
 
 const review = {
   review: "/review",
+  allReviews: "/reviews",
 };
 
 const category = {
@@ -70,8 +71,6 @@ const fullstack = {
   allFullstacks: "/fullstacks",
   singlefullstack: "/fullstack/:email",
   updateEnrollment: "/fullstack/:id",
-
-  
 };
 
 const blog = {

@@ -111,6 +111,31 @@ const logoutUser = () => {
   return { status: "success", message: "Logout successful" };
 };
 
+const changePassword = async (userId, currentPassword, newPassword) => {
+  try {
+    // Find user by ID
+    const user = await userModel.findById(userId);
+
+    if (!user) {
+      return { status: "fail", message: "User not found" };
+    }
+
+    // Check if current password matches
+    if (currentPassword !== user.password) {
+      return { status: "fail", message: "Incorrect current password" };
+    }
+
+    // Update the password
+    user.password = newPassword;
+    await user.save();
+
+    return { status: "success", message: "Password changed successfully" };
+  } catch (error) {
+    console.error("Error during password change:", error);
+    return { status: "fail", message: "Error during password change" };
+  }
+};
+
 const SaveProfileService = async (req) => {
   try {
     let user_id = req.headers.user_id;
@@ -140,4 +165,5 @@ module.exports = {
   SaveProfileService,
   getAllUserFromDb,
   logoutUser,
+  changePassword,
 };

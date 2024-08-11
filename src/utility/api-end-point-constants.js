@@ -4,6 +4,7 @@ const user = {
   verify: "/verifyOtp",
   login: "/login",
   logout: "/logout",
+  changePassword: "/change-password",
   createProfile: "/create-profile",
 };
 

@@ -34,11 +34,25 @@ const updatefullstackInDb = async (fullstackId, payload) => {
   return updatedEnrollment;
 };
 
+// Delete enrollment by ID
+const deleteEnrollmentFromDb = async (fullstackId) => {
+  if (!ObjectId.isValid(fullstackId)) {
+    throw new Error("Invalid course ID");
+  }
+
+  const deletedFullstack = await fullstackenrollmentModel.findByIdAndDelete(
+    fullstackId
+  );
+
+  return deletedFullstack;
+};
+
 const fullstackServices = {
   createfullstackIntoDb,
   getAllfullstackFromDb,
   getFullstackEnrollmentsByEmail,
   updatefullstackInDb,
+  deleteEnrollmentFromDb,
 };
 
 module.exports = fullstackServices;

@@ -104,9 +104,45 @@ const updateFullstackEnrollment = async (req, res) => {
   }
 };
 
+// Delete enrollment
+const deleteEnrollment = async (req, res) => {
+  const fullstackId = req.params.id;
+
+  try {
+    const deletedEnrollment = await fullstackServices.deleteEnrollmentFromDb(
+      fullstackId
+    );
+
+    if (!deletedEnrollment) {
+      sendResponse(res, {
+        statusCode: 404,
+        success: false,
+        message: "Enrollment not found",
+        data: null,
+      });
+      return;
+    }
+
+    sendResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: "Enrollment deleted successfully",
+      data: deletedEnrollment,
+    });
+  } catch (err) {
+    sendResponse(res, {
+      statusCode: err.statusCode || 500,
+      success: false,
+      message: err.message || "Internal Server Error",
+      data: null,
+    });
+  }
+};
+
 module.exports = {
   createFullstack,
   getAllFullstack,
   getFullstackByEmail,
   updateFullstackEnrollment,
+  deleteEnrollment,
 };

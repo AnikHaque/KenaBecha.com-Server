@@ -6,6 +6,7 @@ const {
   SaveProfileService,
   logoutUser,
 } = require("../services/user.service");
+
 const sendResponse = require("../utility/sendResponse");
 
 const userRegistration = async (req, res) => {
@@ -108,6 +109,29 @@ const userLogout = async (req, res) => {
   }
 };
 
+const userChangePassword = async (req, res) => {
+  try {
+    const userId = req.user._id; // Assume the user ID is available in the request object
+    const { currentPassword, newPassword } = req.body;
+    const changePasswordResult = await changePassword(
+      userId,
+      currentPassword,
+      newPassword
+    );
+
+    if (changePasswordResult.status !== "success") {
+      return res.status(400).json(changePasswordResult);
+    }
+
+    return res.status(200).json(changePasswordResult);
+  } catch (error) {
+    console.error("Error during password change:", error);
+    return res
+      .status(500)
+      .json({ status: "fail", message: "Error during password change" });
+  }
+};
+
 const CreateProfile = async (req, res) => {
   let result = await SaveProfileService(req);
   return res.status(200).json(result);
@@ -126,4 +150,5 @@ module.exports = {
   CreateProfile,
   UpdateProfile,
   getAllUsers,
+  userChangePassword,
 };

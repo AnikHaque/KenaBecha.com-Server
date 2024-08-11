@@ -14,6 +14,12 @@ userRouter.post(
 );
 userRouter.post(userEndPoints.login, userControllers.userLogin);
 userRouter.post(userEndPoints.logout, userControllers.userLogout);
+
+userRouter.post(
+  userEndPoints.changePassword,
+  userControllers.userChangePassword
+);
+
 userRouter.post(
   userEndPoints.createProfile,
   AuthVerificationMiddleware,
